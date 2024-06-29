@@ -1,0 +1,110 @@
+*,
+html
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+.blo {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    text-align: center;
+
+}
+
+   
+.phead1{
+    padding: 20px;
+    background-color: aqua;
+   
+ 
+    
+}
+.head{
+    color: rgb(19, 18, 17);
+    font-size: xx-large;
+    font: bolder;
+    padding-left: 35%;
+    
+
+   
+}
+.head1{
+    color: rgb(19, 18, 17);
+    font-size: xx-large;
+    font: bolder;
+    
+}
+
+    
+.isi{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-right: 10px ;
+    padding-left: 10px;
+    height: 50vh;
+    padding-top: 20px;
+   
+
+}
+.p{
+     flex:  20%;
+    box-sizing: border-box;
+    background-color: goldenrod;
+    text-align: center;
+    padding: 10px;
+    height: 50vh;
+    box-shadow: 2px 5px 2px 2px rgb(0, 0, 0, .5);
+
+}
+
+.mapel{
+    font-size: xx-large;
+    font: bold;
+    color: black;
+    padding-bottom: 10vh;
+
+}
+.tombolisi{
+   padding-top: 10vh;
+}
+
+.tombol{
+    background-color: aqua;
+    padding: 10px;
+    border-color: black;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    font: bold;
+
+
+}
+
+.tombolisi :hover{
+    background-color:  black;
+
+}
+
+
+@media screen  and (max-width: 500px){
+   .mapel{
+    font-size: 20px;
+   }
+   .p{
+    height: 30vh;
+   }
+   .tombolisi{
+    padding-top: 18px;
+   }
+   .mapel{
+    padding-bottom: 18px;
+   }
+
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS</title>
+    <link rel="stylesheet" href="css2.css">
+</head>
+
+<body>
+    <div class="bg blo">
+        <div class="phead">
+            <a href="index.html" class="btn"> <button class="btn1" >
+            ⬅
+            </button></a>
+           
+            <h1 class="head">HAMDANI QUIZ</h1>
+        </div>
+        <div class="opacity">
+            <div class="card">
+                <div class="question-container" id="kontener">
+           
+                    <div id="question" class="question"></div>
+                    <ul id="choices" class="choices"></ul>
+                </div>
+                <div class="skor" id="skor"></div>
+                <div class="skor1" id="skor1"></div>
+                <div class="yolo">
+
+                    <a href="ips.html" >
+                    
+                        <button id="tombol" ></button>
+                    </a>
+                </div>
+
+            </div>
+           
+        </div>
+        
+
+       
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Pada tahun berapakah proklamasi kemerdekaan Indonesia?",
+                choices: ["A. 1945", "B. 1947", "C. 1956", "D. 1943"],
+                answer: "A"
+            },
+            {
+                question: "2. Peristiwa apakah yang terjadi pada tahun 1945 yang menyebabkan berakhirnya Perang Dunia II di Eropa?",
+                choices: ["A. Serangan Pearl Harbor", "B. Serangan D-Day", "C. Bom Atom di Hiroshima", "D. Penyerahan Jerman"],
+                answer: "C"
+            },
+            {
+                question: "3. Apa yang menjadi penyebab utama Perang Dunia I?",
+                choices: ["A. Penyerbuan Pearl Harbor", "B. Pembunuhan Archduke Franz Ferdinand", "C. Serangan D-Day", "D. Bom atom di Hiroshima"
+
+                ],
+                answer: "B"
+            },
+            {
+                question: "4. Dimanakah letak geografis Mesir?",
+                choices: ["A. Asia Tenggara", "B. Timur Tengah", "C. Afrika Utara", "D. Eropa Barat"],
+                answer: "C"
+            },
+            {
+                question: "5. Siapa presiden ke 2 Indonesia?",
+                choices: ["A. Soeharto", "B. Megawati", "C. Sukarno", "D. Habibie"],
+                answer: "A"
+            },
+            {
+                question: "6. Apa nama raja yang memerintah pada saat dibangunnya piramida Mesir Kuno?",
+                choices: ["A. Ramses II", "B. Tutankhamun", "C. Khufu", "D. Cleopatra"],
+                answer: "C"
+            },
+            {
+                question: "7. Agama apa yang pertama kali masuk ke wilayah Indonesia?",
+                choices: ["A. Hindu", "B. Buddha", "C. Islam", "D. Kristen"],
+                answer: "A"
+            },
+            {
+                question: "8. Benua yang memiliki jumlah populasi terbanyak adalah",
+                choices: ["A. Eropa", "B. Afrika", "C. Amerika utara", "D. Asia"],
+                answer: "D"
+            },
+            {
+                question: "9. Kapan pertama kali Islam masuk ke wilayah Indonesia?",
+                choices: ["A. Abad ke-7", "B. Abad ke-8", "C. Abad ke-9", "D. Abad ke-10"],
+                answer: "B"
+            },
+            {
+                question: "10.Garis lintang yang terletak di 0° dan membagi bumi menjadi dua bagian yang sama disebut?",
+                choices: ["A. Garis Bujur", "B. Garis Khatulistiwa", "C. Garis Lintang", "D. Garis Meridian"],
+                answer: "B"
+            },
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        
+        let init = -1;
+       
+
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+            const tombol = document.getElementById("tombol")
+            const kontener = document.getElementById ('kontener')
+
+           tombol.style.display= 'none'
+         
+
+        
+
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                choicesElement.innerHTML = "";
+
+                currentQuestion.choices.forEach(choice => {
+                    const p = document.createElement("p");
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.onclick = () => checkAnswer(choice);
+                    p.appendChild(button);
+                    choicesElement.appendChild(p);
+
+
+                    button.style.padding = "10px"
+                    button.style.fontSize = "20px"
+                    button.style.backgroundColor = "aqua"
+                    button.style.textAlign= "left"
+                    p.style.padding = "5px"
+                   
+                });
+              
+              
+           
+                init ++;
+               
+            }
+            else {
+              
+               
+
+                questionElement.textContent = "Selamat, Kamu telah menjawab semua pertanyaan!";
+                choicesElement.innerHTML = "";
+                init ++;
+                document.getElementById("skor").textContent = `Nilai kamu adalah`
+                document.getElementById("skor1").textContent = `${init}0`
+                document.getElementById("tombol").textContent = 'main lagi'
+               kontener.style.textAlign = "center"
+                tombol.style.display = "contents"
+                tombol.style.fontSize= "20px"
+                tombol.style.paddingBottom= "10px"
+                tombol.style.color= 'aqua'
+               
+               
+                
+
+             
+
+                
+            }
+        }
+
+        function checkAnswer(choice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (choice[0] === currentQuestion.answer) {
+                currentQuestionIndex++;
+                displayQuestion()
+                
+            } 
+            else {
+                alert ("jawaban salah")
+                currentQuestionIndex++;
+                displayQuestion()
+                init--
+                console.log(init)
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>

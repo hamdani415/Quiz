@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS</title>
+    <link rel="stylesheet" href="css2.css">
+</head>
+
+<body>
+    <div class="bging blo">
+        <div class="phead">
+            <a href="index.html" class="btn"> <button class="btn1" >
+            ⬅
+            </button></a>
+           
+            <h1 class="head">HAMDANI QUIZ</h1>
+        </div>
+        <div class="opacity">
+            <div class="card">
+                <div class="question-container" id="kontener">
+           
+                    <div id="question" class="question"></div>
+                    <ul id="choices" class="choices"></ul>
+                </div>
+                <div class="skor" id="skor"></div>
+                <div class="skor1" id="skor1"></div>
+                <div class="yolo">
+
+                    <a href="binggris.html" >
+                    
+                        <button id="tombol" ></button>
+                    </a>
+                </div>
+
+            </div>
+           
+        </div>
+        
+
+       
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Choose the correctly spelled word:",
+                choices: ["A. beutiful", "B. bautiful", "C. beautiful ", "D. baautiful"],
+                answer: "C"
+            },
+           
+            {
+                question: "2. Which sentence is grammatically correct?",
+                choices: ["A. I can playing the guitar ", "B. I can to play the guitar ", "C. I can play the guitar", "D. I can plays the guitar"],
+                answer: "C"
+            },
+           
+            {
+                question: "3. Choose the correct form of the verb : (They ___ in London for three years)",
+                choices: ["A. Live", "B. Lived", "C. Lives", "D. Living"],
+                answer: "D"
+            },
+           
+            {
+                question: "4. What is the correct form of the verb: (She ___ to the party last night)",
+                choices: ["A. go", "B. goes ", "C. going ", "D. went"],
+                answer: "D"
+            },
+           
+            {
+                question: "5. What is the correct spelling of the opposite of (hard)?",
+                choices: ["A. eazy ", "B. ezee", "C. easie", "D.  easy"],
+                answer: "D"
+            },
+           
+            {
+                question: "6. What is the correct past tense form of the verb `eat`?",
+                choices: ["A. eating", "B. ate", "C. eats", "D. eaten"],
+                answer: "A"
+            },
+           
+            {
+                question: "7. Choose the correct form of the verb in the Present Simple Tense:(She ___ tennis every Sunday)",
+                choices: ["A. play", "B. plays ", "C. playing", "D. played"],
+                answer: "B"
+            },
+           
+            {
+                question: "8. Which sentence is in the Present Continuous Tense?",
+                choices: ["A. She reads books every day.", "B. They will arrive at 6 PM.", "C. He is playing basketball now. ", "D. We went to the park yesterday."],
+                answer: "C"
+            },
+           
+            {
+                question: "9. What is the first person singular form of the verb `to go` in the Present Simple Tense?",
+                choices: ["A. go", "B. goes", "C. want", "D.going "],
+                answer: "A"
+            },
+           
+            {
+                question: "10. What is the opposite of `happy`?",
+                choices: ["A. Sad", "B. Glad", "C. Joyful", "D. Cheerful"],
+                answer: "A"
+            },
+           
+           
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        
+        let init = -1;
+       
+
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+            const tombol = document.getElementById("tombol")
+            const kontener = document.getElementById ('kontener')
+
+           tombol.style.display= 'none'
+         
+
+        
+
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                choicesElement.innerHTML = "";
+
+                currentQuestion.choices.forEach(choice => {
+                    const p = document.createElement("p");
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.onclick = () => checkAnswer(choice);
+                    p.appendChild(button);
+                    choicesElement.appendChild(p);
+
+
+                    button.style.padding = "10px"
+                    button.style.fontSize = "20px"
+                    button.style.backgroundColor = "aqua"
+                    button.style.textAlign= "left"
+                    p.style.padding = "5px"
+                   
+                });
+              
+              
+           
+                init ++;
+               
+            }
+            else {
+              
+               
+
+                questionElement.textContent = "Selamat, Kamu telah menjawab semua pertanyaan!";
+                choicesElement.innerHTML = "";
+                init ++;
+                document.getElementById("skor").textContent = `Nilai kamu adalah`
+                document.getElementById("skor1").textContent = `${init}0`
+                document.getElementById("tombol").textContent = 'main lagi'
+               kontener.style.textAlign = "center"
+                tombol.style.display = "contents"
+                tombol.style.fontSize= "20px"
+                tombol.style.paddingBottom= "10px"
+                tombol.style.color= 'aqua'
+               
+               
+                
+
+             
+
+                
+            }
+        }
+
+        function checkAnswer(choice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (choice[0] === currentQuestion.answer) {
+                currentQuestionIndex++;
+                displayQuestion()
+                
+            } 
+            else {
+                alert ("jawaban salah")
+                currentQuestionIndex++;
+                displayQuestion()
+                init--
+                console.log(init)
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>

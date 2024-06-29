@@ -1,0 +1,165 @@
+*,
+html
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.bg{
+    background-image: url(pelajaran/ips.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgind{
+    background-image: url(pelajaran/b\ indo.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgm{
+    background-image: url(pelajaran/mtk.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgall{
+    background-image: url(pelajaran/all.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgi{
+    background-image: url(pelajaran/ipa.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgo{
+    background-image: url(pelajaran/olahraga.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bgp{
+    background-image: url(pelajaran/pkn.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.bging{
+    background-image: url(pelajaran/inggris.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+
+}
+.blo{
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    text-align: center;
+
+}
+.phead{
+    background-color: aqua;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.btn{
+    position: absolute;
+  left: 20px;
+}
+.opacity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87.3vh;
+
+}
+.card{
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(14, 113, 174, 0.39);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    border-radius: 8px;
+    text-align: left;
+
+}
+
+
+.question{
+    font-size: 25px;
+    padding-bottom: 25px;
+   
+
+}
+
+.skor{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+   
+
+}
+.skor1{
+    text-align: center;
+    font-size: 70px;
+    font-weight: 900;
+    padding-bottom: 60px;
+    color :aqua;
+    
+
+}
+.yolo{
+    text-align: center;
+   
+    
+
+}
+
+@media screen  and (max-width: 500px){
+    .card{
+        width: 250px;
+    }
+    .opacity{
+        height: 89vh;
+    }
+}

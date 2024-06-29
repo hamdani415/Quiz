@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS</title>
+    <link rel="stylesheet" href="css2.css">
+</head>
+
+<body>
+    <div class="bgm blo">
+        <div class="phead">
+            <a href="index.html" class="btn"> <button class="btn1" >
+            ⬅
+            </button></a>
+           
+            <h1 class="head">HAMDANI QUIZ</h1>
+        </div>
+        <div class="opacity">
+            <div class="card">
+                <div class="question-container" id="kontener">
+           
+                    <div id="question" class="question"></div>
+                    <ul id="choices" class="choices"></ul>
+                </div>
+                <div class="skor" id="skor"></div>
+                <div class="skor1" id="skor1"></div>
+                <div class="yolo">
+
+                    <a href="matematika.html" >
+                    
+                        <button id="tombol" ></button>
+                    </a>
+                </div>
+
+            </div>
+           
+        </div>
+        
+
+       
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Berapakah hasil dari 25 + 3 * 5?",
+                choices: ["A. 40", "B. 33", "C. 32", "D. 128"],
+                answer: "A"
+            },
+           
+            {
+                question: "2. Jika sebuah segitiga memiliki panjang sisi-sisi 3 cm, 4 cm, dan 5 cm, maka segitiga tersebut adalah...",
+                choices: ["A. siku-siku", "B. sama sisi", "C. sama kaki", "D. sembarang"],
+                answer: "A"
+            },
+           
+            {
+                question: "3. berapakah hasil dari √169",
+                choices: ["A. 12", "B. 13", "C. 14", "D. 15"],
+                answer: "B"
+            },
+           
+            {
+                question: "4. Jika panjang dan lebar suatu persegi panjang berturut-turut 8 cm dan 5 cm, maka luasnya adalah...",
+                choices: ["A. 13 cm²", "B. 45 cm²", "C. 40 cm²", "D. 45 cm²"],
+                answer: "C"
+            },
+           
+            {
+                question: "5. ika 15% dari sebuah jumlah adalah 60, maka jumlah tersebut adalah...",
+                choices: ["A. 300", "B. 400", "C. 350", "D. 450"],
+                answer: "B"
+            },
+           
+            {
+                question: "6. jika 2X + 4Y = 22 dan 5X - 2Y = 7 maka tentukan nilai dari 5X + 4Y",
+                choices: ["A. 34", "B. 33", "C. 32", "D. 31"],
+                answer: "D"
+            },
+           
+            {
+                question: "7. Sebuah segitiga siku-siku memiliki panjang sisi-sisi 6 cm, 8 cm, dan x cm. Nilai x adalah...",
+                choices: ["A. 7 cm", "B. 10 cm", "C. 5 cm", "D. 9 cm"],
+                answer: "B"
+            },
+           
+            {
+                question: "8. Jika harga sebuah buku adalah 25.000 rupiah dan turun 20%, maka harga setelah diskon adalah...",
+                choices: ["A. 22.500 rupiah", "B. 23.000 rupiah", "C. 24.000 rupiah", "D. 20.000 rupiah "],
+                answer: "D"
+            },
+           
+            {
+                question: "9. Jika deret bilangan ganjil dimulai dari 1, 3, 5, 7, ..., maka suku ke-6 dari deret tersebut adalah...",
+                choices: ["A. 13", "B. 11", "C. 9", "D. 15"],
+                answer: "B"
+            },
+           
+            {
+                question: "1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 3 * 0 =",
+                choices: ["A. 13", "B. 0", "C. 12", "D. 10"],
+                answer: "D"
+            },
+           
+           
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        
+        let init = -1;
+       
+
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+            const tombol = document.getElementById("tombol")
+            const kontener = document.getElementById ('kontener')
+
+           tombol.style.display= 'none'
+         
+
+        
+
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                choicesElement.innerHTML = "";
+
+                currentQuestion.choices.forEach(choice => {
+                    const p = document.createElement("p");
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.onclick = () => checkAnswer(choice);
+                    p.appendChild(button);
+                    choicesElement.appendChild(p);
+                    questionElement.style.color = "white"
+
+
+                    button.style.padding = "10px"
+                    button.style.fontSize = "20px"
+                    button.style.backgroundColor = "aqua"
+                    button.style.textAlign= "left"
+                    p.style.padding = "5px"
+                   
+                });
+              
+              
+           
+                init ++;
+               
+            }
+            else {
+              
+               
+
+                questionElement.textContent = "Selamat, Kamu telah menjawab semua pertanyaan!";
+                choicesElement.innerHTML = "";
+                init ++;
+                document.getElementById("skor").textContent = `Nilai kamu adalah`
+                document.getElementById("skor1").textContent = `${init}0`
+                document.getElementById("tombol").textContent = 'main lagi'
+               kontener.style.textAlign = "center"
+                tombol.style.display = "contents"
+                tombol.style.fontSize= "20px"
+                tombol.style.paddingBottom= "10px"
+                tombol.style.color= 'aqua'
+               
+               
+                
+
+             
+
+                
+            }
+        }
+
+        function checkAnswer(choice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (choice[0] === currentQuestion.answer) {
+                currentQuestionIndex++;
+                displayQuestion()
+                
+            } 
+            else {
+                alert ("jawaban salah")
+                currentQuestionIndex++;
+                displayQuestion()
+                init--
+                console.log(init)
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>

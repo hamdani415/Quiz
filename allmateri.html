@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS</title>
+    <link rel="stylesheet" href="css2.css">
+</head>
+
+<body>
+    <div class="bgall blo">
+        <div class="phead">
+            <a href="index.html" class="btn"> <button class="btn1" >
+            ⬅
+            </button></a>
+           
+            <h1 class="head">HAMDANI QUIZ</h1>
+        </div>
+        <div class="opacity">
+            <div class="card">
+                <div class="question-container" id="kontener">
+           
+                    <div id="question" class="question"></div>
+                    <ul id="choices" class="choices"></ul>
+                </div>
+                <div class="skor" id="skor"></div>
+                <div class="skor1" id="skor1"></div>
+                <div class="yolo">
+
+                    <a href="all.html" >
+                    
+                        <button id="tombol" ></button>
+                    </a>
+                </div>
+
+            </div>
+           
+        </div>
+        
+
+       
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Perang Dunia II dimulai pada tahun",
+                choices: ["A. 1936", "B. 1945", "C. 1939 ", "D. 1928 "],
+                answer: "C"
+            },
+           
+            {
+                question: "2. Hukum gravitasi ditemukan oleh ilmuwan terkenal bernama...",
+                choices: ["A. Isaac Newton", "B. Albert Einstein", "C. Galileo Galilei", "D. Charles Darwin"],
+                answer: "A"
+            },
+           
+            {
+                question: "3. Siapa presiden ke 6 Republik Indonesia?",
+                choices: ["A. Soekarno", "B. Soeharto", "C. Jokowi", "D. SBY"],
+                answer: "D"
+            },
+           
+            {
+                question: "4. Apa nama kompetisi bulu tangkis paling bergengsi di Indonesia?",
+                choices: ["A. All England", "B. Indonesia Open", "C.  Thomas Cup ", "D. Uber Cup"],
+                answer: "B"
+            },
+           
+            {
+                question: "5. Berapakah hasil dari √144?",
+                choices: ["A. 12", "B. 14", "C. 15 ", "D. 13"],
+                answer: "A"
+            },
+           
+            {
+                question: "6. Pengertian dari sinonim adalah...",
+                choices: ["A. Kata yang memiliki makna yang sama", "B. Kata yang berlawanan makna ", "C. Kata yang bermakna ganda", "D.  Kata yang tidak bermakna"],
+                answer: "A"
+            },
+           
+            {
+                question: "7. bahasa ingris dari tas adalah",
+                choices: ["A. table", "B. car", "C. mouse ", "D. bag"],
+                answer: "D"
+            },
+           
+            {
+                question: "8. Apa nilai dari π (pi) dalam matematika?",
+                choices: ["A. 3,14", "B. 15", "C. 3,24", "D. 3 "],
+                answer: "A"
+            },
+           
+            {
+                question: "9. Apa nama bagian dari sel tumbuhan yang berperan dalam fotosintesis?",
+                choices: ["A. Kloroplas", "B. Mitokondria", "C. Ribosom ", "D. Lisosom"],
+                answer: "A"
+            },
+           
+            {
+                question: "Berapa jumlah pemain dalam tim sepak bola yang bermain secara reguler?",
+                choices: ["A. 12", "B. 13", "C. 14", "D. 11"],
+                answer: "D"
+            },
+           
+           
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        
+        let init = -1;
+       
+
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+            const tombol = document.getElementById("tombol")
+            const kontener = document.getElementById ('kontener')
+
+           tombol.style.display= 'none'
+         
+
+        
+
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                choicesElement.innerHTML = "";
+
+                currentQuestion.choices.forEach(choice => {
+                    const p = document.createElement("p");
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.onclick = () => checkAnswer(choice);
+                    p.appendChild(button);
+                    choicesElement.appendChild(p);
+
+
+                    button.style.padding = "10px"
+                    button.style.fontSize = "20px"
+                    button.style.backgroundColor = "aqua"
+                    button.style.textAlign= "left"
+                    p.style.padding = "5px"
+                   
+                });
+              
+              
+           
+                init ++;
+               
+            }
+            else {
+              
+               
+
+                questionElement.textContent = "Selamat, Kamu telah menjawab semua pertanyaan!";
+                choicesElement.innerHTML = "";
+                init ++;
+                document.getElementById("skor").textContent = `Nilai kamu adalah`
+                document.getElementById("skor1").textContent = `${init}0`
+                document.getElementById("tombol").textContent = 'main lagi'
+               kontener.style.textAlign = "center"
+                tombol.style.display = "contents"
+                tombol.style.fontSize= "20px"
+                tombol.style.paddingBottom= "10px"
+                tombol.style.color= 'aqua'
+               
+               
+                
+
+             
+
+                
+            }
+        }
+
+        function checkAnswer(choice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (choice[0] === currentQuestion.answer) {
+                currentQuestionIndex++;
+                displayQuestion()
+                
+            } 
+            else {
+                alert ("jawaban salah")
+                currentQuestionIndex++;
+                displayQuestion()
+                init--
+                console.log(init)
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>

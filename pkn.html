@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS</title>
+    <link rel="stylesheet" href="css2.css">
+</head>
+
+<body>
+    <div class="bgp blo">
+        <div class="phead">
+            <a href="index.html" class="btn"> <button class="btn1" >
+            ⬅
+            </button></a>
+           
+            <h1 class="head">HAMDANI QUIZ</h1>
+        </div>
+        <div class="opacity">
+            <div class="card">
+                <div class="question-container" id="kontener">
+           
+                    <div id="question" class="question"></div>
+                    <ul id="choices" class="choices"></ul>
+                </div>
+                <div class="skor" id="skor"></div>
+                <div class="skor1" id="skor1"></div>
+                <div class="yolo">
+
+                    <a href="pkn.html" >
+                    
+                        <button id="tombol" ></button>
+                    </a>
+                </div>
+
+            </div>
+           
+        </div>
+        
+
+       
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Negara Indonesia berbentuk ... ",
+                choices: ["A. Monarki", "B. Republik", "C. Oligarki", "D. Komunis"],
+                answer: "B"
+            },
+           
+            {
+                question: "2. Siapa penulis naskah Proklamasi Kemerdekaan Indonesia?",
+                choices: ["A. Soekarno", "B. Mohammad Hatta ", "C. Soebardjo ", "D. Ki Hadjar Dewantara"],
+                answer: "C"
+            },
+           
+            {
+                question: "3. Hari pancasila di peringati setiap tanggal",
+                choices: ["A. 1 juni", "B. 1 mei", "C. 22 juni", "3. 17 agustus"],
+                answer: "A"
+            },
+           
+            {
+                question: "4. Kewajiban untuk menghormati simbol-simbol negara, seperti bendera, lambang negara, dan lagu kebangsaan, merupakan bagian dari...",
+                choices: ["A. Hak asai manusia", "B. kewajiban moral", "C. Hak politik", "D. kewajiban konstitusional"],
+                answer: "B"
+            },
+           
+            {
+                question: "5. Hak untuk mendapatkan pendidikan adalah contoh dari...",
+                choices: ["A. Hak politik  ", "B. Hak ekonomi ", "C. Hak sosial", "D. Hak budaya"],
+                answer: "C"
+            },
+           
+            {
+                question: "6. Hak asasi manusia (HAM) di Indonesia dijamin oleh?",
+                choices: ["A. Pancasila", "B. UUD 1945", "C. Pancasila dan UUD 1945 ", "D. Polisi"],
+                answer: "C"
+            },
+           
+            {
+                question: "7. Siapa yang menyusun naskah Pancasila?",
+                choices: ["A. Mohammad hatta", "B. Soekarno", "C. Soepomo", "D. Hamdani"],
+                answer: "C"
+            },
+           
+            {
+                question: "8. Siapa yang mengajukan Piagam Jakarta dalam Konferensi Asia-Afrika tahun 1955?",
+                choices: ["A. Mohammad hatta ", "B. Bung tomo", "C. Jendral sudriman", "D. Ir. Soekarno"],
+                answer: "D"
+            },
+           
+            {
+                question: "9. UUD 1945 disahkan pada tanggal?",
+                choices: ["A. 17 Agustus 1945", "B. 18 Agustus 1945", "C. 19 Agustus 1945", "D. 20 Agustus 1945"],
+                answer: "B"
+            },
+           
+            {
+                question: "10. Berapa jumlah sila pada pancasila",
+                choices: ["A. 5", "B. 4", "C. 6", "D. 3"],
+                answer: "A"
+            },
+           
+           
+        ];
+
+        let currentQuestionIndex = 0;
+        
+        let init = -1;
+       
+
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+            const tombol = document.getElementById("tombol")
+            const kontener = document.getElementById ('kontener')
+
+           tombol.style.display= 'none'
+         
+
+        
+
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                choicesElement.innerHTML = "";
+
+                currentQuestion.choices.forEach(choice => {
+                    const p = document.createElement("p");
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.onclick = () => checkAnswer(choice);
+                    p.appendChild(button);
+                    choicesElement.appendChild(p);
+
+
+                    button.style.padding = "10px"
+                    button.style.fontSize = "20px"
+                    button.style.backgroundColor = "aqua"
+                    button.style.textAlign= "left"
+                    p.style.padding = "5px"
+                   
+                });
+              
+              
+           
+                init ++;
+               
+            }
+            else {
+              
+               
+
+                questionElement.textContent = "Selamat, Kamu telah menjawab semua pertanyaan!";
+                choicesElement.innerHTML = "";
+                init ++;
+                document.getElementById("skor").textContent = `Nilai kamu adalah`
+                document.getElementById("skor1").textContent = `${init}0`
+                document.getElementById("tombol").textContent = 'main lagi'
+               kontener.style.textAlign = "center"
+                tombol.style.display = "contents"
+                tombol.style.fontSize= "20px"
+                tombol.style.paddingBottom= "10px"
+                tombol.style.color= 'aqua'
+               
+               
+                
+
+             
+
+                
+            }
+        }
+
+        function checkAnswer(choice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (choice[0] === currentQuestion.answer) {
+                currentQuestionIndex++;
+                displayQuestion()
+                
+            } 
+            else {
+                alert ("jawaban salah")
+                currentQuestionIndex++;
+                displayQuestion()
+                init--
+                console.log(init)
+            }
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>
